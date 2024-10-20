@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,14 +24,8 @@ body {
 
 .col {
     padding: 15px;
-    max-width: 300px; /* Limit the width of the columns */
+    max-width: 400px; /* Limit the width of the columns */
     box-sizing: border-box; /* Include padding in width */
-}
-
-.notesheading h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
 }
 
 .card {
@@ -41,10 +34,10 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
-    padding: 15px;
+    padding: 20px; /* Increased padding for a spacious look */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center; /* Center contents vertically */
     text-align: center; /* Center-align text in the card */
 }
 
@@ -54,45 +47,47 @@ body {
 
 .cardheader {
     font-weight: bold;
-    font-size: 1.2em;
-    margin-bottom: 10px;
+    font-size: 1.5em; /* Slightly larger for emphasis */
+    margin-bottom: 15px;
     color: #5cb85c; /* Green color for headings */
 }
 
-.cardbody {
+.cardbody h1 {
+    font-size: 1.5em; /* Adjust title size */
+    margin: 10px 0; /* Space around the title */
+    color: #333; /* Dark color for title */
+}
+
+.cardbody p {
+    font-size: 1em; /* Standard text size */
     color: #666; /* Darker gray for the body text */
+    line-height: 1.5; /* Increase line height for readability */
 }
 
     </style>
-    
 </head>
 <body>
+    
     <div class="row">
         <div class="col">
-            <div class="notesheading ">
-                <h1>Your Notes</h1>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        {% for note in notes %}
-            <div class="col">
-               <div class="card">
-                   <div class="cardheader">{{note.note_title}}</div>
-                   <div class="cardbody">
-                    <p>{{note.note_content|truncatechars:10}}</p>
-                   </div>
-                   <div class="cardfooter">
-                    <a href="{% url 'notesdetail' pk=note.id %}" class="btn">View Note</a>
+             <div class="card">
+                 <div class="cardheader">Note Details</div>
+                 <div class="cardbody">
+                     <h1>{{note.note_title}}</h1>
+                     <p>{{note.note_content}}</p>
+
+                 </div>
+                 <div class="cardfooter">
+                    <a href="{% url 'noteslist' %}"class="btn">Back</a>
+                    <a href="{% url 'notesupdate' pk=note.id %}" class="btn">Edit Note</a>
+                    <a href="{% url 'notesdelete' pk=note.id %}" class="btn">Delete Note</a>
                     
-                    
-                   </div>
-                   
-               </div>
-            </div>
-        {% endfor %}
-        
+                 </div>
+             </div>
+         </div>
+
     </div>
+    
     
     
 </body>
