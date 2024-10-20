@@ -1,19 +1,134 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    max-width: 500px;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+button {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 8px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+li {
+    background-color: #fffae6; 
+    border-left: 5px solid #ffcc00; 
+    padding: 12px;
+    border-radius: 8px;
+    margin-top:20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+li:nth-child(odd) {
+    background-color: #e6f7ff; 
+    border-left: 5px solid #007bff; 
+
+li:hover {
+    background-color: #e2e6ea;
+}
+
+li button {
+    background-color: #dc3545;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+li button:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+}
+
+
+
+    </style>
+    
 </head>
 <body>
-<h1>These are notes</h1>
-<ul>
-    {% for note in notes %}
-    
-        <li>{{note.note_title}}</li>
-    {% endfor %}
-</ul>
-    
+    <div class="container">
+        <h1>My Notes</h1>
+        <form id="note-form">
+            <input type="text" id="note-input" placeholder="Add a new note..." required>
+            <button type="submit">Add Note</button>
+        </form>
+        <ul id="notes-list">
+            
+            <li>First Note</li>
+            <li>Second Note</li>
+            <li>Third Note</li>
+        </ul>
+    </div>
     
 </body>
 </html>
