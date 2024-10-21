@@ -5,64 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        * {
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #eef2f3, #ffffff); /* Gradient background for the whole screen */
     margin: 0;
     padding: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center the content */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* Center items in the row */
-    margin: 0 -15px; /* Adjusts for padding */
+    width: 100%; /* Ensure it occupies full width */
 }
 
 .col {
     padding: 15px;
     max-width: 400px; /* Limit the width of the columns */
-    box-sizing: border-box; /* Include padding in width */
+    width: 100%; /* Full width for smaller screens */
 }
 
 .card {
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-    padding: 20px; /* Increased padding for a spacious look */
+    background: linear-gradient(135deg, #71b7e6, #9b59b6); /* Gradient background for the card */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center; /* Center contents vertically */
     text-align: center; /* Center-align text in the card */
+    color: white; /* White text for better contrast */
 }
 
 .card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover */
 }
 
 .cardheader {
     font-weight: bold;
-    font-size: 1.5em; /* Slightly larger for emphasis */
+    font-size: 1.8em; /* Larger for emphasis */
     margin-bottom: 15px;
-    color: #5cb85c; /* Green color for headings */
+    color: #fff; /* White color for headings */
 }
 
 .cardbody h1 {
-    font-size: 1.5em; /* Adjust title size */
+    font-size: 1.6em; /* Adjust title size */
     margin: 10px 0; /* Space around the title */
-    color: #333; /* Dark color for title */
+    color: #fff; /* White color for title */
 }
 
 .cardbody p {
     font-size: 1em; /* Standard text size */
-    color: #666; /* Darker gray for the body text */
-    line-height: 1.5; /* Increase line height for readability */
+    color: #eaeaea; /* Light gray for the body text */
+    line-height: 1.6; /* Increase line height for readability */
 }
+
+.cardfooter {
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: #f39c12; /* Button color */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px; /* Increased padding for buttons */
+    text-decoration: none; /* Remove underline from links */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth hover effect */
+    margin: 5px; /* Space between buttons */
+    display: inline-block; /* Align buttons correctly */
+    font-size: 1em; /* Button text size */
+}
+
+.btn:hover {
+    background-color: #e67e22; /* Darker orange on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+.btn-danger{
+    background-color: #e74c3c;} /* Re
+
+
+
 
     </style>
 </head>
@@ -79,8 +113,8 @@ body {
                  </div>
                  <div class="cardfooter">
                     <a href="{% url 'noteslist' %}"class="btn">Back</a>
-                    <a href="{% url 'notesupdate' pk=note.id %}" class="btn">Edit Note</a>
-                    <a href="{% url 'notesdelete' pk=note.id %}" class="btn">Delete Note</a>
+                    <a href="{% url 'notesupdate' pk=note.id %}" class="btn">Edit </a>
+                    <a href="{% url 'notesdelete' pk=note.id %}" class="btn">Delete</a>
                     
                  </div>
              </div>

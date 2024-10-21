@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+* {
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f9f9f9, #e2e2e2); /* Gradient background for a soft look */
     margin: 0;
     padding: 20px;
     display: flex;
@@ -25,58 +29,74 @@ body {
     max-width: 400px; /* Limit the width of the column */
     width: 100%; /* Allow column to be responsive */
     padding: 15px;
-    box-sizing: border-box; /* Include padding in width */
 }
 
 form {
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px; 
+    padding: 30px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s; 
+}
+
+form:hover {
+    transform: translateY(-2px); 
 }
 
 .btn {
-    background-color: #5cb85c; /* Green background for button */
-    color: white; /* White text */
+    background-color: #ff6f61; 
+    color: white; 
     border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
+    border-radius: 6px; 
+    padding: 12px 20px; 
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%; /* Full width for button */
+    transition: background-color 0.3s, transform 0.2s; 
+    width: 100%; 
     margin-top: 10px;
 }
 
 .btn:hover {
-    background-color: #4cae4c; /* Darker green on hover */
+    background-color: #e65c50; 
+    transform: scale(1.05); 
 }
 
-.form-group {
-    margin-bottom: 15px; /* Space between form fields */
+.cardfooter {
+    margin-top: 20px; 
+}
+
+.cardfooter .btn {
+    background-color: #5cb85c; 
+}
+
+.cardfooter .btn:hover {
+    background-color: #4cae4c; 
 }
 
 label {
     display: block;
-    margin-bottom: 5px; /* Space between label and input */
-    font-weight: bold; /* Bold labels */
-}
+    margin-bottom: 8px; 
+    font-weight: bold;
+    color: #333;}
 
 input, textarea, select {
-    width: 100%; /* Full width for inputs */
-    padding: 10px;
+    width: 100%; 
+    padding: 12px; 
     border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px; /* Standard font size for inputs */
-    box-sizing: border-box; /* Include padding in width */
-    margin-top: 5px; /* Space between input and label */
+    border-radius: 6px; 
+    font-size: 14px;
+    box-sizing: border-box; 
+    margin-top: 5px; 
+    transition: border-color 0.3s; 
 }
 
 input:focus, textarea:focus, select:focus {
-    border-color: #5cb85c; /* Change border color on focus */
-    outline: none; /* Remove default outline */
+    border-color: #ff6f61; 
+    outline: none; 
+    box-shadow: 0 0 5px rgba(255, 111, 97, 0.5); 
 }
+
 
     </style>
 </head>
