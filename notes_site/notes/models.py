@@ -9,3 +9,7 @@ class Notes(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='notes')
 
 
+
+
+    def __str__(self):
+        return self.title

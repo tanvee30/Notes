@@ -29,7 +29,7 @@ class NotesUpdateView(LoginRequiredMixin,UpdateView):
 class NotesCreateView(LoginRequiredMixin,CreateView):
     model=Notes
     
-    success_url='/smart/notes/'
+    success_url='notes/new'
     form_class=NotesForm
     login_url="/login"
 
@@ -37,7 +37,12 @@ class NotesCreateView(LoginRequiredMixin,CreateView):
         self.object=form.save(commit=False)
         self.object.users=self.request.user
         self.object.save()
+        
+        form.save()
         return HttpResponseRedirect(self.get_success_url())
+    
+    
+
 
 class NotesListView(LoginRequiredMixin,ListView):
     model=Notes

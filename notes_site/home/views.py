@@ -14,7 +14,7 @@ from django.shortcuts import redirect
 class SignupView(CreateView):
     form_class=UserCreationForm
     template_name='home/register.html'
-    success_url='smart/notes'
+    success_url='/smart/notes'
 
     
 class LoginInterfaceView(LoginView):

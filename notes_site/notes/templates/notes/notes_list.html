@@ -85,6 +85,13 @@ body {
     
 </head>
 <body>
+    <nav>
+        <form method="POST" action="{% url 'logout' % }">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    </nav>
+    
     <div class="row">
         <div class="col">
             <div class="notesheading ">
@@ -94,7 +101,7 @@ body {
         </div>
     </div>
     <div class="cardfooter">
-        <a href="{% url 'notesnew'  %}" class="btn"> +Add New Note</a>
+        <a href="{% url 'notesnew' %}" class="btn"> +Add New Note</a>
         
         
     </div>
