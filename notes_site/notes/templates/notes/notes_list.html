@@ -7,8 +7,11 @@
     <title>Document</title>
     <style>
 body {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+
+    
     font-family: Arial, sans-serif;
-    background-color: #f0f4f8; 
+    
     margin: 0;
     padding: 20px;
 }
@@ -16,8 +19,8 @@ body {
 .row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center items in the row */
-    margin: 20px 0; /* Space between rows */
+    justify-content: center; 
+    margin: 20px 0; 
 }
 
 .col {
@@ -33,17 +36,17 @@ body {
 }
 
 .card {
-    background: linear-gradient(135deg, #71b7e6, #9b59b6); /* Gradient background */
+    background: linear-gradient(135deg, #71b7e6, #9b59b6); 
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effect */
-    color: white; /* White text for better contrast */
+    transition: transform 0.2s, box-shadow 0.2s; 
+    color: white;
 }
 
 .card:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .cardheader {
@@ -55,26 +58,26 @@ body {
 .cardbody p {
     font-size: 1em;
     line-height: 1.5;
-    margin: 0; /* Remove default margin */
+    margin: 0; 
 }
 
 .cardfooter {
     margin-top: 20px;
-    text-align: center; /* Center the button */
+    text-align: center; 
 }
 
 .btn {
-    background-color: #f39c12; /* Button color */
-    color: white; /* Button text color */
+    background-color: #f39c12; 
+    color: white; 
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
-    text-decoration: none; /* Remove underline from links */
-    transition: background-color 0.3s; /* Smooth hover effect */
+    text-decoration: none; 
+    transition: background-color 0.3s; 
 }
 
 .btn:hover {
-    background-color: #e67e22; /* Darker orange on hover */
+    background-color: #e67e22; 
 }
 
 
@@ -86,9 +89,20 @@ body {
         <div class="col">
             <div class="notesheading ">
                 <h1>Your Notes</h1>
+                
             </div>
         </div>
     </div>
+    <div class="cardfooter">
+        <a href="{% url 'notesnew'  %}" class="btn"> +Add New Note</a>
+        
+        
+    </div>
+       
+
+
+           
+
     <div class="row">
         {% for note in notes %}
             <div class="col">
@@ -105,6 +119,9 @@ body {
                    
                </div>
             </div>
+            
+               
+
         {% endfor %}
         
     </div>
