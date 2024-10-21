@@ -12,6 +12,7 @@ class NotesDeleteView(LoginRequiredMixin,DeleteView):
     model=Notes
     success_url='/smart/notes/'
     login_url="/login"
+    template_name='notes/notes_delete.html'
 
     def get_queryset(self):
         return self.request.user.notes.all()
@@ -25,21 +26,22 @@ class NotesUpdateView(LoginRequiredMixin,UpdateView):
 
     def get_queryset(self):
         return self.request.user.notes.all()
-
-class NotesCreateView(LoginRequiredMixin,CreateView):
-    model=Notes
     
-    success_url='notes/new'
-    form_class=NotesForm
-    login_url="/login"
 
-    def form_valid(self,form):
-        self.object=form.save(commit=False)
-        self.object.users=self.request.user
+
+class NotesCreateView(LoginRequiredMixin, CreateView):
+    model = Notes
+    form_class = NotesForm
+    success_url = '/smart/notes/'
+    login_url = "/login"
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user  
         self.object.save()
-        
-        form.save()
         return HttpResponseRedirect(self.get_success_url())
+    
+
     
     
 

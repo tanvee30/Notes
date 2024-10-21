@@ -86,10 +86,11 @@ body {
 </head>
 <body>
     <nav>
-        <form method="POST" action="{% url 'logout' % }">
+        <form method="POST" action="{% url 'logout' %}">
             {% csrf_token %}
-            <button type="submit">Logout</button>
+            <button  class="btn" type="submit">Logout</button>
         </form>
+        
     </nav>
     
     <div class="row">
