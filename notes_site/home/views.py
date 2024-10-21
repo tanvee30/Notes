@@ -22,6 +22,8 @@ class LoginInterfaceView(LoginView):
 
 class LogoutInterfaceView(LogoutView):
     template_name='home/logout.html'
+    
+
 
 
 class HomeView(TemplateView):
