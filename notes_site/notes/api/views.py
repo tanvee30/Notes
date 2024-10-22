@@ -3,6 +3,19 @@ from rest_framework.response import Response
 from notes.models import Notes
 from .serializers import NotesSerializer
 from rest_framework import status
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.contrib.auth import authenticate
+from rest_framework import status
+
+
+
+
+
+
+
 
 
 
@@ -22,6 +35,16 @@ def getNames(request):
     serializer=NotesSerializer(notes,many=True)
 
     return Response(serializer.data)
+
+@api_view(['POST'])
+def createNote(request):
+    serializer = NotesSerializer(data=request.data)
+    
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+    
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
