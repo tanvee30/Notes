@@ -1,14 +1,11 @@
 from django import forms
-from .models import Notes
+from .models import Note
 
-class NotesForm(forms.ModelForm):
+class NoteForm(forms.ModelForm):
     class Meta:
-        model=Notes
-        fields=('note_title','note_content')
-        widgets={
-            'note_title':forms.TextInput(attrs={'class':'form-control my-3'}),
-            'note_content':forms.Textarea(attrs={'class':'form-control my-3'}),
-        }
-        labels = {
-            'note_content':'Write your notes here'
+        model = Note
+        fields = ['title', 'content']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter title'}),
+            'content': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Write your note here'}),
         }

@@ -1,0 +1,21 @@
+{% extends "home/base.html" %}
+{% block title %}Add Note{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center text-primary">Add a New Note</h2>
+<div class="card p-4 mx-auto" style="max-width: 600px;">
+  <form method="post">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input type="text" name="title" class="form-control" placeholder="e.g. Grocery List" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Content</label>
+      <textarea name="content" rows="5" class="form-control" placeholder="Write your note here..." required></textarea>
+    </div>
+    <button type="submit" class="btn btn-success w-100">Save Note</button>
+  </form>
+</div>
+{% endblock %}

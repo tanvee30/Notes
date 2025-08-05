@@ -1,68 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-    background-color: #f8f9fa; /* Light background for contrast */
-}
+{% extends 'home/base.html' %}
+{% block title %}Login{% endblock %}
 
-.card {
-    width:30%;
-    background-color: #ffffff; /* White background for the card */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 20px; /* Padding inside the card */
-    margin-top: 80px; /* Space above the card */
-    margin-left: 120px;}
-
-.form-group {
-    margin-bottom: 15px; /* Space between form elements */
-    
-}
-
-input[type="submit"] {
-    width: 40%; /* Full width button */
-    padding: 10px; /* Padding inside the button */
-    font-size: 16px; /* Larger text */
-    border: none; /* No border */
-    border-radius: 5px; /* Slightly rounded corners */
-    background-color: #007bff; /* Bootstrap primary color */
-    color: white; /* White text */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth transition */
-    
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-
-
-
-    </style>
-</head>
-<body>
-    <div class="row justify-content-center">
-        <div class="col-md-4">
-            <div class="card">
-                <form action="" method="post">
-                    {% csrf_token %}
-                    {{form.as_p}}
-                    <input type="submit" class="btn">
-                </form>
-                <span>New User</span>
-                <a href="{% url 'signup' %}">Sign -up Here</a>
-                    
-
-            </div>
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm p-4">
+            <h2 class="mb-4 text-center">Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success w-100">Login</button>
+            </form>
         </div>
     </div>
-    
-    
-
-</body>
-</html>
+</div>
+{% endblock %}

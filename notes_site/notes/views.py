@@ -1,66 +1,54 @@
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
+from .forms import NoteForm
+from django.contrib.auth.decorators import login_required
+from .models import Note
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Note
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from .models import Notes
-from django.views.generic import CreateView, ListView,DetailView,UpdateView,DeleteView
-from .forms import NotesForm
 
-from django.contrib.auth.mixins import LoginRequiredMixin
 
-# Create your views here.
 
-class NotesDeleteView(LoginRequiredMixin,DeleteView):
-    model=Notes
-    success_url='/smart/notes/'
-    login_url="/login"
-    template_name='notes/notes_delete.html'
-
-    def get_queryset(self):
-        return self.request.user.notes.all()
-    
-
-class NotesUpdateView(LoginRequiredMixin,UpdateView):
-    model=Notes
-    success_url='/smart/notes/'
-    form_class=NotesForm
-    login_url="/login"
-
-    def get_queryset(self):
-        return self.request.user.notes.all()
+@login_required
+def add_note(request):
+    if request.method == 'POST':
+        form = NoteForm(request.POST)
+        if form.is_valid():
+            note = form.save(commit=False)
+            note.user = request.user
+            note.save()
+            return redirect('dashboard')  # Or you can show a list of notes later
+    else:
+        form = NoteForm()
+    return render(request, 'notes/add_note.html', {'form': form})
     
 
 
-class NotesCreateView(LoginRequiredMixin, CreateView):
-    model = Notes
-    form_class = NotesForm
-    success_url = '/smart/notes/'
-    login_url = "/login"
 
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.user = self.request.user  
-        self.object.save()
-        return HttpResponseRedirect(self.get_success_url())
+
+@login_required
+def view_notes(request):
+    notes = Note.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'notes/view_notes.html', {'notes': notes})
+
+
+
+@login_required
+def edit_note(request, note_id):
+    note = get_object_or_404(Note, id=note_id, user=request.user)
     
-
+    if request.method == 'POST':
+        note.title = request.POST['title']
+        note.content = request.POST['content']
+        note.save()
+        return redirect('view_notes')
     
-    
+    return render(request, 'notes/edit_note.html', {'note': note})
 
 
-class NotesListView(LoginRequiredMixin,ListView):
-    model=Notes
-    context_object_name="notes"
-    login_url="/login"
-
-    def get_queryset(self):
-        return self.request.user.notes.all()
-
-class NotesDetailView(LoginRequiredMixin,DetailView):
-    model=Notes
-    context_object_name="note"
-    login_url="/login"
-
-    def get_queryset(self):
-        return self.request.user.notes.all()
-
-
+@login_required
+def delete_note(request, note_id):
+    note = get_object_or_404(Note, id=note_id, user=request.user)
+    note.delete()
+    return redirect('view_notes')
 
